@@ -16,9 +16,10 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout(props: {
+  children: React.ReactNode,
+  modal: React.ReactNode
+}) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
@@ -35,7 +36,9 @@ export default function RootLayout({
           {/*<div className="w-full">First layout</div>*/}
           <TopNav />
           <div className="p-4">
-            {children}
+            {props.children}
+            {props.modal}
+            <div id="modal-root" />
           </div>
         </body>
       </html>
